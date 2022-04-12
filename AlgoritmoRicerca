@@ -4,7 +4,7 @@
 #include <time.h>
 #define n 10000
 
-int main()
+void GenerazNum()
 {
     int i;
     int ArrayNum[n];
@@ -25,6 +25,37 @@ int main()
     tempoFine = clock();
     tempoTotale = (double)(tempoFine - tempoInizio) / CLOCKS_PER_SEC;
     printf("\nIl tempo impiegato per la generazione di numeri casuali è: %f", tempoTotale); 
+}
+
+void OrdinamentoBolla (int *ArrayNum)
+{
+    int i, j; 
+    int NumSostituito; 
     
-    printf("%ld", CLOCKS_PER_SEC);
+    double tempoInizio, tempoFine, tempoTotale;
+    tempoInizio = clock(); 
+    	for (j = 0; j < n - 1; j++)
+    	{
+    		for (i = 0; i < n - 1; i++)
+    		{
+    			if (ArrayNum[i] > ArrayNum[i + 1])
+    			{	
+    				NumSostituito = ArrayNum[i];
+    				ArrayNum[i] = ArrayNum[i + 1];
+    				ArrayNum[i + 1] = NumSostituito;
+    			}
+    		}
+    	}
+    	tempoFine = clock();
+    	tempoTotale = (double)(tempoFine - tempoInizio) / CLOCKS_PER_SEC;
+        printf("\nIl tempo di ordinamento per bolla è: %f", tempoTotale);
+}
+
+int main()
+{ 
+    int *ArrayNum[n];
+    
+    GenerazNum();
+    OrdinamentoBolla(ArrayNum);
+    
 }
