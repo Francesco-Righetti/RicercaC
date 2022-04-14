@@ -61,7 +61,7 @@ void RicercaSequenziale(int *ArrayNum) {
     
     double tempoInizio, tempoFine, tempoTotale;
     tempoInizio = clock(); 
-    
+
     for (i = 0; i < n; i++) {
         if (ArrayNum[Contatore] = NumCercato)
             NumTrovato = true;
@@ -76,14 +76,26 @@ void RicercaSequenziale(int *ArrayNum) {
         
     tempoFine = clock();
     tempoTotale = (double)(tempoFine - tempoInizio) / CLOCKS_PER_SEC;
-    printf("\nIl tempo impiegato per la ricerca sequenziale di un elemento è; %f", tempoTotale);
+    printf("\nIl tempo impiegato per la ricerca sequenziale di un elemento è; %f \n", tempoTotale);
 }
 
-int main()
+
+void ArrayOrdinato()
 { 
     int ArrayNum[n];
     GenerazNum();
     OrdinamentoBolla(ArrayNum);
     RicercaSequenziale(ArrayNum);
-    return 0;    
+}
+
+void ArrayDisordinato(){
+    int ArrayNum[n];
+    GenerazNum();
+    RicercaSequenziale(ArrayNum);
+}
+
+int main(){
+    ArrayOrdinato();
+    ArrayDisordinato();
+    return 0;
 }
