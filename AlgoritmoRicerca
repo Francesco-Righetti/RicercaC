@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
 #define n 10000
 
 void GenerazNum()
@@ -51,11 +52,38 @@ void OrdinamentoBolla (int *ArrayNum)
         printf("\nIl tempo di ordinamento per bolla è: %f", tempoTotale);
 }
 
+void RicercaSequenziale(int *ArrayNum) {
+    int NumPosizione  = n;
+    int NumCercato    = 4444; 
+    int Contatore     = 0;
+    int i;
+    bool NumTrovato   = false;
+    
+    double tempoInizio, tempoFine, tempoTotale;
+    tempoInizio = clock(); 
+    
+    for (i = 0; i < n; i++) {
+        if (ArrayNum[Contatore] = NumCercato)
+            NumTrovato = true;
+        else
+            Contatore++;
+    }
+    
+    if (NumTrovato == false)
+        printf("\nIl numero %d non è presente nel vettore.", NumCercato);
+    else 
+        printf("\nIl numero %d è presente nel vettore in posizione %d.", NumCercato, Contatore);
+        
+    tempoFine = clock();
+    tempoTotale = (double)(tempoFine - tempoInizio) / CLOCKS_PER_SEC;
+    printf("\nIl tempo impiegato per la ricerca sequenziale di un elemento è; %f", tempoTotale);
+}
+
 int main()
 { 
-    int *ArrayNum[n];
-    
+    int ArrayNum[n];
     GenerazNum();
     OrdinamentoBolla(ArrayNum);
-    
+    RicercaSequenziale(ArrayNum);
+    return 0;    
 }
